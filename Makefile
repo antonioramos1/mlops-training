@@ -29,8 +29,8 @@ run_mlflow_image:
 	--registry-password $CONT_REGISTRY_PW
 
 push_model_image_acr:
-	az login -u $AZURE_USER -p $AZURE_PW
-	az acr login --name antoniocontreg
+	#az login -u $AZURE_USER -p $AZURE_PW
+	az acr login --name antoniocontreg --password $CONT_REGISTRY_PW
 	docker login antoniocontreg.azurecr.io
 	docker tag antonio/irismodel:1.0 antoniocontreg.azurecr.io/irismodel
 	docker push antoniocontreg.azurecr.io/irismodel

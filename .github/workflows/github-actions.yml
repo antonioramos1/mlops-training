@@ -4,21 +4,23 @@ on:
   pull_request:
     branches: [master]
 
-jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install requirements
-        run: pip install -r requirements.txt
+      - name: Build model image
+        run: make build_model_image
 
-      - name: Train model
-        run: python model_training.py
+      - name: Push model image to ACR
+        run: make push_model_image_acr
         env:
           AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
           CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
 
-      - name: Test model
-        run: python test/model_tests.py
+      - name: Update image deployed in ACI
+        run: make restart_model_acr
+
+      - name: Tests model service
+          run: python build_tests.py
