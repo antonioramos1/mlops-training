@@ -10,8 +10,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - env:
+      - shell: bash
+        env:
           AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
+        env:
           CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
 
       - name: Install requirements
