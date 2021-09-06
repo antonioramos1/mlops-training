@@ -9,7 +9,7 @@ server_uri = "http://antoniomlflowaci.westeurope.azurecontainer.io:5000"
 exp_name = "tree_model_iris"
 model_name = "tree_model"
 artifact_path = "mlflow-artifact-root"
-params = {"max_depth": 3, "max_features": 2, "min_samples_split": 20, "random_state": 1}
+params = {"max_depth": 5, "max_features": 2, "min_samples_split": 20, "random_state": 1}
 
 mlflow.set_tracking_uri(server_uri)
 client = MlflowClient()
