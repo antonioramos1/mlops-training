@@ -21,7 +21,4 @@ jobs:
           CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
 
       - name: Test model
-        run: python model_tests.py
-        env:
-          AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
-          CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
+        run: python test/model_tests.py
