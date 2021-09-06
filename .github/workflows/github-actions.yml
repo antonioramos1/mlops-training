@@ -1,0 +1,7 @@
+jobs:
+  stage:
+    on: pull_request
+    steps:
+      - run: pip install -r requirements.txt
+      - run: python model_training.py
+      - run: python model_tests.py
