@@ -10,17 +10,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        env:
-          AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
-          CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
 
       - name: Install requirements
         run: pip install -r requirements.txt
 
-      - run: "echo  CONT_REGISTRY_PW: $CONT_REGISTRY_PW '$CONT_REGISTRY_PW'"
-
       - name: Train model
         run: python model_training.py
+        env:
+          AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
+          CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
 
       - name: Test model
         run: python model_tests.py
