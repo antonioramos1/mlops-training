@@ -4,6 +4,7 @@ on:
   pull_request:
     branches: [master]
 
+jobs:
   staging:
     runs-on: ubuntu-latest
 
