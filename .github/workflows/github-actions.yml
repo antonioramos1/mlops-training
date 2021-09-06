@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - shell: bash
+      - name: Credentials
         env:
           AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
           CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
