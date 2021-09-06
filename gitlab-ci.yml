@@ -1,6 +1,5 @@
 stages:
   - test
-  - build
 
 ci-job:
   stage: test
@@ -8,15 +7,3 @@ ci-job:
     - pip install -r requirements.txt
     - python model_training.py
     - python model_tests.py
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-
-build-job:
-  stage: build
-  script:
-    - make build_model_image
-    - make push_model_image_acr
-    - make restart_model_acr
-    - python build_tests.py
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
