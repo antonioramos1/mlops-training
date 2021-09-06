@@ -23,4 +23,4 @@ on:
         run: make restart_model_acr
 
       - name: Tests model service
-          run: python build_tests.py
+        run: python build_tests.py
