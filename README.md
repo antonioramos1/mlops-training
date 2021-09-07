@@ -1,5 +1,5 @@
 # MLOps Training
-![example workflow](https://github.com/antonioramos1/mlops-training/actions/workflows/github_actions.yml/badge.svg)
+![example workflow](https://github.com/antonioramos1/mlops-training/workflows/github_actions.yml/badge.svg)
 ![alt text](./imgs/banner-repo-mlops.png)
 
 ### 1. Create a MLFlow service
