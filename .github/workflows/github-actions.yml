@@ -25,5 +25,8 @@ jobs:
       - name: Update image deployed in ACI
         run: make restart_model_acr
 
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
       - name: Tests model service
         run: python test/build_tests.py
