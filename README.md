@@ -1,6 +1,6 @@
 # MLOps Training
-[![CI Pipeline status](https://github.com/antonioramos1/mlops-training/workflows/test/badge.svg)](https://github.com/antonioramos1/mlops-training/actions)
-[![Android Actions status](https://github.com/AndreSand/BornInApp/workflows/android/badge.svg)](https://github.com/AndreSand/BornInApp/actions)
+[![CI Pipeline status](https://github.com/antonioramos1/mlops-training/workflows/ci/badge.svg)](https://github.com/antonioramos1/mlops-training/actions)
+[![Build Pipeline status](https://github.com/antonioramos1/mlops-training/workflows/build/badge.svg)](https://github.com/antonioramos1/mlops-training/actions)
 ![alt text](./imgs/banner-repo-mlops.png)
 
 ### 1. Create a MLFlow service

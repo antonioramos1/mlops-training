@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
+      - name: Train model
+        run: python model_training.py
+        env:
+          AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
+          CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
+
+      - name: Test model
+        run: python test/model_tests.py
