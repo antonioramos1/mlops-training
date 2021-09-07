@@ -11,8 +11,8 @@ run_model_image_local:build_model_image
 	docker run -d --name irismodel1.0 -p 8000:8000 antonio/irismodel\:1.0
 
 push_mlflow_image_acr:
-	az login -u $AZURE_USER -p $AZURE_PW
-	az acr login --name antoniocontreg --username antoniocontreg --password $CONT_REGISTRY_PW
+	az login -u $$AZURE_USER -p $$AZURE_PW
+	az acr login --name antoniocontreg --username antoniocontreg --password $$CONT_REGISTRY_PW
 	docker login antoniocontreg.azurecr.io
 	docker tag antonio/mlflow:1.19 antoniocontreg.azurecr.io/mlflow
 	docker push antoniocontreg.azurecr.io/mlflow
@@ -26,11 +26,11 @@ run_mlflow_image:
 	--ip-address public \
 	--ports 5000 \
 	--registry-username antoniocontreg
-	--registry-password $CONT_REGISTRY_PW
+	--registry-password $$CONT_REGISTRY_PW
 
 push_model_image_acr:
-	az login -u $AZURE_USER -p $AZURE_PW
-	az acr login --name antoniocontreg --username antoniocontreg --password $CONT_REGISTRY_PW
+	az login -u $$AZURE_USER -p $$AZURE_PW
+	az acr login --name antoniocontreg --username antoniocontreg --password $$CONT_REGISTRY_PW
 	docker login antoniocontreg.azurecr.io
 	docker tag antonio/irismodel:1.0 antoniocontreg.azurecr.io/irismodel
 	docker push antoniocontreg.azurecr.io/irismodel
@@ -49,4 +49,4 @@ run_model_image:
 	--ip-address public \
 	--ports 8000 \
 	--registry-username antoniocontreg \
-	--registry-password $CONT_REGISTRY_PW
+	--registry-password $$CONT_REGISTRY_PW
