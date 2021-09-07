@@ -1,11 +1,11 @@
-name: ci
+name: ci-build
 
 on:
   pull_request:
     branches: [master]
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,3 +22,29 @@ jobs:
 
       - name: Test model
         run: python test/model_tests.py
+
+  staging:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build model image
+        run: make build_model_image
+
+      - name: Push model image to ACR
+        run: make push_model_image_acr
+        env:
+          AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
+          CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
+          AZURE_USER: ${{ secrets.AZURE_USER }}
+          AZURE_PW: ${{ secrets.AZURE_PW }}
+
+      - name: Update image deployed in ACI
+        run: make restart_model_acr
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
+      - name: Tests model service
+        run: python test/build_tests.py
