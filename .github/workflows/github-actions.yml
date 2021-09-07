@@ -19,6 +19,8 @@ jobs:
         env:
           AZURE_STORAGE_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_ACCESS_KEY }}
           CONT_REGISTRY_PW: ${{ secrets.CONT_REGISTRY_PW }}
+          $AZURE_USER: ${{ secrets.$AZURE_USER }}
+          $AZURE_PW: ${{ secrets.$AZURE_PW }}
 
       - name: Update image deployed in ACI
         run: make restart_model_acr
