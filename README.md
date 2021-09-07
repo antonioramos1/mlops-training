@@ -1,5 +1,6 @@
 # MLOps Training
 ![example workflow](https://github.com/antonioramos1/mlops-training/workflows/github_actions/badge.svg)
+[![CI Pipeline status](https://github.com/antonioramos1/mlops-training/workflows/github_actions/badge.svg)](https://github.com/antonioramos1/mlops-training/actions)
 ![alt text](./imgs/banner-repo-mlops.png)
 
 ### 1. Create a MLFlow service
